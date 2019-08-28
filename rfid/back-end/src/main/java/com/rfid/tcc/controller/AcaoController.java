@@ -1,11 +1,7 @@
 package com.rfid.tcc.controller;
 
-import com.rfid.tcc.model.Acao;
 import com.rfid.tcc.service.AcaoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,11 +16,7 @@ public class AcaoController {
     private AcaoService acaoService;
 
     @PostMapping
-    public ResponseEntity<Acao> salvarArquivo(@RequestParam("file")MultipartFile file){
-        if(file == null){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        Acao acao = acaoService.salvarAcao(file);
-        return new ResponseEntity<>(acao, HttpStatus.OK);
+    public void upload(@RequestParam MultipartFile file, @RequestParam Integer codigorfid) {
+        acaoService.salvarArquivo(file, codigorfid);
     }
 }
