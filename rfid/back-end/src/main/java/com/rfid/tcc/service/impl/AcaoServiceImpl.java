@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -36,4 +37,26 @@ public class AcaoServiceImpl implements AcaoService {
             throw new RuntimeException("Problemas na tentativa de salvar arquivo.", e);
         }
     }
+
+    public String analisar(String caminho)
+    {
+        //cria um objeto file para o caminho especificado pelo usuario
+        File nome = new File (raiz);
+
+        //se o nome existir e for diretorio , gera informações
+        if (nome.exists() && nome.isDirectory())
+        {
+            //recebe a lista do nome dos arquivos
+            String arquivos [] = nome.list();
+
+            for (String item : arquivos){
+                System.out.printf("%s\n",item);
+
+            }
+        }
+        else 	System.out.printf("%s\n" , "Nao encontrado");
+        return caminho;
+    }
 }
+
+
