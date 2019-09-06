@@ -1,0 +1,12 @@
+.headNav{
+background-color: #498cf8;
+padding: 30px;
+}
+
+input[type=text] {
+    border: none;
+    background-color: white;
+    padding: 1px;
+    margin-left: -65px;
+  }
+
