@@ -4,7 +4,7 @@ padding: 30px;
 margin-bottom: 30px;
 }
 
-input[type=text] {
+input.codigo{
     border: none;
     background-color: white;
     padding: 1px;
