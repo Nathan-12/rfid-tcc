@@ -1,6 +1,7 @@
 .headNav{
 background-color: #498cf8;
 padding: 30px;
+margin-bottom: 30px;
 }
 
 input[type=text] {
@@ -9,4 +10,14 @@ input[type=text] {
     padding: 1px;
     margin-left: -65px;
   }
+
+h1{
+  font-family: 'Acme', sans-serif;
+  color: white;
+  text-align: center;
+}
+
+a{
+  margin: 70px;
+}
 
