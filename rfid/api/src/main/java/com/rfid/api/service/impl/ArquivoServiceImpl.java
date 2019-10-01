@@ -1,7 +1,9 @@
-package com.rfid.tcc.service.impl;
+package com.rfid.api.service.impl;
 
-import com.rfid.tcc.model.Acao;
-import com.rfid.tcc.service.AcaoService;
+import com.rfid.api.model.Arquivo;
+import com.rfid.api.repository.ArquivoRepository;
+import com.rfid.api.service.ArquivoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,7 +15,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @Service
-public class AcaoServiceImpl implements AcaoService {
+public class ArquivoServiceImpl implements ArquivoService {
 
     @Value("${contato.disco.raiz}")
     private String raiz;
@@ -21,15 +23,14 @@ public class AcaoServiceImpl implements AcaoService {
     @Value("${contato.disco.diretorio-files}")
     private String diretorioArquivos;
 
-    public void salvarArquivo(MultipartFile arquivo, Integer codigo) {
-        this.salvar(this.diretorioArquivos, arquivo, codigo);
-    }
+    @Autowired
+    private ArquivoRepository arquivoRepository;
 
-    public void salvar(String diretorio, MultipartFile arquivo, Integer codigorfid) {
+    @Override
+    public Arquivo adicionarArquivo(String diretorio, MultipartFile arquivo, Integer codigo ){
         Path diretorioPath = Paths.get(this.raiz, diretorio);
-        String codigoRfidName = Integer.toString(codigorfid);
+        String codigoRfidName = Integer.toString(codigo);
         Path arquivoPath = diretorioPath.resolve("00"+codigoRfidName);
-
         try {
             Files.createDirectories(diretorioPath);
             arquivo.transferTo(arquivoPath.toFile());
@@ -37,6 +38,7 @@ public class AcaoServiceImpl implements AcaoService {
         } catch (IOException e) {
             throw new RuntimeException("Problemas na tentativa de salvar arquivo.", e);
         }
+        return null;
     }
 
     public String analisar(String caminho)
@@ -58,6 +60,5 @@ public class AcaoServiceImpl implements AcaoService {
         else 	System.out.printf("%s\n" , "Nao encontrado");
         return caminho;
     }
+
 }
-
-
