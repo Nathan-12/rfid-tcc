@@ -1,3 +1,4 @@
+ 
 <template>
   <v-app>
     <v-app-bar app>
@@ -13,8 +14,6 @@
 </template>
 
 <script>
-
-
 export default {
   name: 'App',
   
