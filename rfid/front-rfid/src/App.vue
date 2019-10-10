@@ -10,9 +10,10 @@
           <li>
             <router-link to="/cadastro">Cadastro</router-link>
           </li>
+          <!--
           <li>
-            <router-link to="/adicionar-arquivos">Adicionar arquivos</router-link>
-          </li>
+            <router-link to="/adicionar-arquivo">Adicionar arquivos</router-link>
+          </li> -->
           <li>
             <router-link to="/listar-atividades">Lista de Atividades</router-link>
           </li>
