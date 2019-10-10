@@ -1,6 +1,6 @@
 <template>
-  <div class="hello">
-    <h1>Bem vindo(a) !!!</h1>
+  <div>
+    <h1>Atividade Cadastrada com sucesso !!!</h1>
   </div>
 </template>
 

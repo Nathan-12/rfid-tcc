@@ -1,23 +1,28 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '../components/HelloWorld'
-import HomePage from '../components/Home'
+//import HomePage from '../components/Home'
+import CadastroAtividadePage from '../page/CadastroAtividade' 
+import CadastroOkPage from '../page/CadastroOk'
 //import FirstRoute from '@/components/FirstRoute'
 //import FirstRouteChild from '@/components/FirstRouteChild'
 
 Vue.use(Router)
 
-export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'Hello',
-      component: HelloWorld
+export default [
+  {
+    path: "/",
+    name: "HelloWorld",
+    component: HelloWorld
+  },
+  {
+    path: "/cadastro",
+    name: "CadastroAtividade",
+    component: CadastroAtividadePage
     },
-    {   
-        path: '/home',
-        name: 'Home',
-        component: HomePage
-      },
-  ]
-})
+  {
+    path: "/cadastro-ok",
+    name: "CadastroOk",
+    component: CadastroOkPage
+  },
+];

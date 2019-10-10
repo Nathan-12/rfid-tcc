@@ -5,8 +5,9 @@
     <div class="">
       <ul>
         <li><router-link to="/">Home</router-link></li>
-        <li><router-link to="/home">Cadastro</router-link></li>
-        <li><router-link to="/firstroute/Peter/child">FirstRouteChild</router-link></li>
+        <li><router-link to="/cadastro">Cadastro</router-link></li>
+        <li><router-link to="/adicionar-arquivos">Adicionar arquivos</router-link></li>
+        <li><router-link to="/listar-atividades">Lista de Atividades</router-link></li>
       </ul>
 
     </div>

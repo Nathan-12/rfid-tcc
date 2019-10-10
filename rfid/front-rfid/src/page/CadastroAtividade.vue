@@ -1,23 +1,35 @@
 <template>
   <div id="app">
     <nav>
-      <div class="nav-wrapper blue darken-1">
+      <div class="nav-wrapper green darken-1 color" >
         <a href="#" class="brand-logo center">Sistema rfid</a>
       </div>
     </nav>
 
     <div class="container">
       <form @submit.prevent="salvar">
-        <label>Nome da atividade</label>
-        <input type="text" placeholder="Nome" v-model="nome" />
-
+        
+        <input type="text" placeholder="Nome da Atividade" v-model="nome" />
+    
         <p>
           <label>
             <input class="with-gap" name="group1" type="radio" value="ASSOCIACAO" v-model="tipoAtividade" />
             <span>Associação</span>
           </label>
         </p>
-        <button class="waves-effect waves-light btn-small">
+        <p>
+          <label>
+            <input class="with-gap" name="group1" type="radio" value="ATIVIDADE@" v-model="tipoAtividade" />
+            <span>Atividade 2</span>
+          </label>
+        </p>
+        <p>
+          <label>
+            <input class="with-gap" name="group1" type="radio" value="ATIVIDADE3" v-model="tipoAtividade" />
+            <span>Atividade 3</span>
+          </label>
+        </p>
+        <button class="waves-effect green waves-light btn-small">
           Salvar
           <i class="material-icons left">save</i>
         </button>
@@ -48,7 +60,7 @@ export default {
                 tipoAtividade: this.tipoAtividade
             })
             .then(() => {
-                alert("cadastrado")
+                this.$router.push("/cadastro-ok");
             })
             .catch(e =>{
                 alert("erro: " + e);
@@ -59,4 +71,5 @@ export default {
 </script>
 
 <style>
+
 </style>
