@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="container">
     <h1>Bem vindo(a) !!!</h1>
   </div>
 </template>
@@ -19,6 +19,7 @@ export default {
 <style scoped>
 h1, h2 {
   font-weight: normal;
+  text-align: center;
 }
 ul {
   list-style-type: none;
