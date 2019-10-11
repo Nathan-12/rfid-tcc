@@ -4,27 +4,7 @@
       <div class="row">
         <div class="col s1"></div>
         <div class="col s10">
-          <table>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Nome do arquivo</th>
-                <th>codigo</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr v-for="arquivo of arquivos" :key="arquivo.id">
-                <td>{{ arquivo.id }}</td>
-                <td>{{ arquivo.nome }}</td>
-                <td>00{{ arquivo.codigo }}</td>
-              </tr>
-            </tbody>
-          </table>
-          <div id="container">
-            <input id="codigoCartao" type="text" />
-          </div>
-
+        <input id="codigoCartao" type="text" />  
           <div class="container">
             <div class="row">
               <div class="col-sm"></div>
@@ -35,14 +15,12 @@
                 </video>-->
                 <img id="tagImagem" src=""/>
                 
-                
               </div>
-
               <div class="col-sm"></div>
             </div>
           </div>
         </div>
-        <div class="col s1"><img src="/static/arquivos/0022112233" alt=""></div>
+        <div class="col s1"></div>
       </div>
     </div>
   </div>
@@ -61,8 +39,8 @@ inputCodigo.focus();
       //video.load();
       //video.play();
       img.setAttribute("src", "/static/arquivos/" + inputCodigo.value);
-      img.load();
-      inputCodigo.value = "";
+      
+      inputCodigo.value = '';
     }
   });
 });
@@ -77,20 +55,12 @@ export default {
 
   created: function() {
     this.atividadeId = this.$route.params.id;
-    this.initialize();
   },
 
   methods: {
-    initialize() {
-      this.$http
-        .get("http://localhost:8090/arquivo/exibir/" + this.atividadeId)
-        .then(res => {
-          this.arquivos = res.data;
-        });
-    },
     blockSubmit(event) {
       event.preventDefault();
-    },
+    }
   }
 };
 </script>
