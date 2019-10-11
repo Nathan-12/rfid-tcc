@@ -2,8 +2,8 @@
   <div id="app">
     <div class="container">
       <div class="row">
-        <div class="col s2"></div>
-        <div class="col s8">
+        <div class="col s1"></div>
+        <div class="col s10">
           <table>
               
             <thead>
@@ -11,6 +11,7 @@
                 <th>#</th>
                 <th>Nome da atividade</th>
                 <th>Tipo da atividade</th>
+                <th></th>
                 <th></th>
               </tr>
             </thead>
@@ -21,13 +22,14 @@
                 <td>{{ atividade.nome }}</td>
                 <td>{{ atividade.tipoAtividade }}</td>
                 <td><button class="waves-effect waves-light btn-small" @click="adicionar(atividade)">Adicionar arquivos<i class="material-icons left">add</i></button></td>
+                <td><button class=" waves-effect waves-light btn-small" @click="verFiles(atividade)">Ver arquivos<i class="material-icons left">visibility</i></button></td>
               </tr>
               
               
             </tbody>
           </table>
         </div>
-        <div class="col s2"></div>
+        <div class="col s1"></div>
       </div>
     </div>
   </div>
@@ -53,6 +55,10 @@ export default {
   methods: {
       adicionar(atividade){
           this.$router.push("/adicionar-arquivo/" + atividade.id);
+      },
+      verFiles(atividade){
+        this.$router.push("/listar-arquivos/" + atividade.id);
+        this.$router.go();
       }
   }
 };
