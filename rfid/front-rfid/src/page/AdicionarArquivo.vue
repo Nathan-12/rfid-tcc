@@ -4,42 +4,29 @@
       <div class="row">
         <div class="col s2"></div>
         <div class="col s8">
-          <form @submit.prevent="salvar">
-              <div class="row">
-                  <div class="col s6">
-                      
-                  </div>
-                  <div class="col s6">
-                      
-                  </div>
-              </div>
-              <table>
-        <thead>
-          <tr>
-              <th>#</th>
-              <th>Escolha o arquivo</th>
-              <th>Insira o código rfid</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td><input type="file" /></td>
-            <td><input type="text" placeholder="Código do cartão" /></td>
-          </tr>
-          <tr>
-              <td>2</td>
-            <td><input type="file" /></td>
-            <td><input type="text" placeholder="Código do cartão" /></td>
-          </tr>
-          <tr>
-              <td>3</td>
-            <td><input type="file" /></td>
-            <td><input type="text" placeholder="Código do cartão" /></td>
-          </tr>
-        </tbody>
-      </table>
+          <form @submit.prevent="salvarFile">
+            <div class="row">
+              <div class="col s6"></div>
+              <div class="col s6"></div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Escolha o arquivo</th>
+                  <th>Insira o código rfid</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <input id="files" ref="files" type="file" v-on:change="selecionarArquivos()" />
+                  </td>
+                  <td>
+                    <input type="text" placeholder="Código do cartão" v-model="codigo" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
             <button class="waves-effect green waves-light btn-small">
               Salvar
               <i class="material-icons left">save</i>
@@ -61,26 +48,41 @@ export default {
   name: "app",
   data() {
     return {
-      nome: "",
-      tipoAtividade: ""
+      
+      file: null,
+      codigo: "",
+      atividadeId: ""
     };
   },
-  mounted() {
-    //this.listar()
+  created: function() {
+    this.atividadeId = this.$route.params.id;
   },
   methods: {
-    salvar() {
+    salvarFile() {
+      const formData = new FormData();
+      formData.append("file", this.file);
+      formData.append("codigo", this.codigo);
       this.$http
-        .post("http://localhost:8090/api/adicionar", {
-          nome: this.nome,
-          tipoAtividade: this.tipoAtividade
+        .post("http://localhost:8090/api/" + this.atividadeId, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
         })
         .then(() => {
-          this.$router.push("/cadastro-ok");
+          alert("Arquivo cadastrado com sucesso na atividade");
+          this.codigo = ""
         })
         .catch(e => {
           alert("erro: " + e);
         });
+    },
+
+    selecionarArquivos() {
+      this.file = this.$refs.files.files[0];
+    },
+    limparCampos(){
+        this.codigo = "",
+        this.file = null
     }
   }
 };
