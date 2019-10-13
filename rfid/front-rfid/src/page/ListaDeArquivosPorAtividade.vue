@@ -4,23 +4,6 @@
       <div class="row">
         <div class="col s1"></div>
         <div class="col s10">
-          <table>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Nome do arquivo</th>
-                <th>codigo</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr v-for="arquivo of arquivos" :key="arquivo.id">
-                <td>{{ arquivo.id }}</td>
-                <td>{{ arquivo.nome }}</td>
-                <td>00{{ arquivo.codigo }}</td>
-              </tr>
-            </tbody>
-          </table>
           <div id="container">
             <input id="codigoCartao" type="text" />
           </div>
@@ -33,45 +16,27 @@
                 <!--<video loop id="tagVideo" width="400px" height="400px">
                   <source src="/assets/arquivos/" type="mp4" />
                 </video>-->
-                <img id="tagImagem" src=""/>
-                
-                
+                <img id="tagImagem" src />
               </div>
 
               <div class="col-sm"></div>
             </div>
           </div>
         </div>
-        <div class="col s1"><img src="/static/arquivos/0022112233" alt=""></div>
+        <div class="col s1"></div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-  const inputCodigo = document.querySelector("#codigoCartao");
-  const img = document.querySelector("#tagImagem");
-
-inputCodigo.focus();
-  inputCodigo.addEventListener("keyup", function(event) {
-    if (event.which === 13) {
-      //video.pause();
-      //video.setAttribute("src", "arquivos/" + inputCodigo.value);
-      //video.load();
-      //video.play();
-      img.setAttribute("src", "/static/arquivos/" + inputCodigo.value);
-      img.load();
-      inputCodigo.value = "";
-    }
-  });
-});
-
 export default {
   name: "app",
   data() {
     return {
-      arquivos: []
+      arquivos: [],
+      indice: 0,
+      srcSet: ""
     };
   },
 
@@ -85,12 +50,38 @@ export default {
       this.$http
         .get("http://localhost:8090/arquivo/exibir/" + this.atividadeId)
         .then(res => {
+          const inputCodigo = document.querySelector("#codigoCartao");
+          const img = document.querySelector("#tagImagem");
+          
           this.arquivos = res.data;
+          this.srcSet = "00" + res.data[this.indice].codigo;
+
+          console.log(this.arquivos);
+          console.log(this.srcSet);
+          img.setAttribute("src", "/static/arquivos/" + this.srcSet);
+          inputCodigo.addEventListener("keyup", function(event) {
+            if (event.which === 13) {
+              if (this.srcSet === this.inputCodigo) {
+                alert("codigo certo!!!");
+                this.indice ++;
+                img.setAttribute("src", "/static/arquivos/" + this.srcSet);
+                console.log(this.indice);
+                console.log(this.inputCodigo);
+              } else {
+                alert("Código errado");
+              }
+              //video.pause();
+              //video.setAttribute("src", "arquivos/" + inputCodigo.value);
+              //video.load();
+              //video.play();
+              inputCodigo.value = "";
+            }
+          });
         });
     },
     blockSubmit(event) {
       event.preventDefault();
-    },
+    }
   }
 };
 </script>
