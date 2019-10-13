@@ -5,7 +5,7 @@
         <div class="col s1"></div>
         <div class="col s10">
           <div id="container">
-            <input id="codigoCartao" type="text" />
+            <input v-model="inputCodigo" @keyup="verificarCodigo" type="text" />
           </div>
 
           <div class="container">
@@ -36,7 +36,8 @@ export default {
     return {
       arquivos: [],
       indice: 0,
-      srcSet: ""
+      srcSet: "",
+      inputCodigo: ""
     };
   },
 
@@ -50,34 +51,28 @@ export default {
       this.$http
         .get("http://localhost:8090/arquivo/exibir/" + this.atividadeId)
         .then(res => {
-          const inputCodigo = document.querySelector("#codigoCartao");
           const img = document.querySelector("#tagImagem");
-          
           this.arquivos = res.data;
           this.srcSet = "00" + res.data[this.indice].codigo;
-
-          console.log(this.arquivos);
-          console.log(this.srcSet);
           img.setAttribute("src", "/static/arquivos/" + this.srcSet);
-          inputCodigo.addEventListener("keyup", function(event) {
-            if (event.which === 13) {
-              if (this.srcSet === this.inputCodigo) {
-                alert("codigo certo!!!");
-                this.indice ++;
-                img.setAttribute("src", "/static/arquivos/" + this.srcSet);
-                console.log(this.indice);
-                console.log(this.inputCodigo);
-              } else {
-                alert("Código errado");
-              }
-              //video.pause();
-              //video.setAttribute("src", "arquivos/" + inputCodigo.value);
-              //video.load();
-              //video.play();
-              inputCodigo.value = "";
-            }
-          });
+          //video.pause();
+          //video.setAttribute("src", "arquivos/" + inputCodigo.value);
+          //video.load();
+          //video.play();
         });
+    },
+    verificarCodigo(event) {
+      if (event.which === 13) {
+        if (this.srcSet == this.inputCodigo) {
+          this.indice++;
+          this.initialize();
+        } else {
+          alert("Código Errado");
+          console.log(this.srcSet);
+          console.log(this.inputCodigo);
+        }
+        this.inputCodigo = ""
+      }
     },
     blockSubmit(event) {
       event.preventDefault();
