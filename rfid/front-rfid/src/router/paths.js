@@ -6,8 +6,10 @@ import CadastroAtividadePage from '../page/CadastroAtividade'
 import CadastroOkPage from '../page/CadastroOk' 
 import AdicionarArquivoPage from '../page/AdicionarArquivo'
 import ListaDeAtividadesPage from '../page/ListaDeAtividades'
-import ListaDeArquivosPorAtividadePage from "../page/ListaDeArquivosPorAtividade"
-import FilesCadastradosPage from "../page/FilesCadastrados"
+import AssociacaoPage from "../page/Associacao"
+import FilesCadastradosPage from "../page/FilesCadastrados" 
+import AtividadeEncerradaPage from "../page/AtividadeEncerrada" 
+import ArquivosPorAtividadePage from "../page/ArquivosPorAtividade"
 //import FirstRoute from '@/components/FirstRoute'
 //import FirstRouteChild from '@/components/FirstRouteChild'
 
@@ -27,7 +29,12 @@ export default [
   {
     path: "/cadastro-ok",
     name: "CadastroOk",
-    component: CadastroOkPage
+    component: CadastroOkPage 
+  },
+  {
+    path: "/atividade-encerrada",
+    name: "AtividadeEncerrada",
+    component: AtividadeEncerradaPage
   },
   {
     path: "/adicionar-arquivo/:id",
@@ -40,9 +47,14 @@ export default [
     component: ListaDeAtividadesPage
   },
   {
-    path: "/listar-arquivos/:id",
-    name: "ListaDeArquivos",
-    component: ListaDeArquivosPorAtividadePage
+    path: "/associacao/:id",
+    name: "Associacao",
+    component: AssociacaoPage
+  },
+  {
+    path: "/arquivos/:id",
+    name: "ArquivosPorAtividade",
+    component: ArquivosPorAtividadePage
   },
   {
     path: "/files-cadastrados",

@@ -8,7 +8,7 @@
       <div class="row"></div>
       <div class="col s2"></div>
       <div class="col s8">
-        <!--<video loop id="tagVideo" width="400px" height="400px">
+      <!--<video loop id="tagVideo" width="400px" height="400px">
                   <source src="/assets/arquivos/" type="mp4" />
       </video>-->
       <img id="tagImagem" src />
@@ -27,7 +27,8 @@ export default {
       arquivos: [],
       indice: 0,
       srcSet: "",
-      inputCodigo: ""
+      inputCodigo: "",
+      erros: 0
     };
   },
 
@@ -56,11 +57,17 @@ export default {
         if (this.srcSet == this.inputCodigo) {
           this.indice++;
           this.initialize();
+          //console.log(this.arquivos.length);
+          //console.log(this.indice);
+          if(this.arquivos.length == this.indice){
+            this.$router.push("/atividade-encerrada")
+          }
         }
         else {
           alert("Código Errado");
-          console.log(this.srcSet);
-          console.log(this.inputCodigo);
+          this.erros ++;
+          //console.log(this.srcSet);
+          //console.log(this.inputCodigo);
         }
         this.inputCodigo = "";
       }
@@ -74,7 +81,7 @@ export default {
 
 <style>
 .inputCod {
-  margin-top: -100px;
+  margin-top: -500px;
 }
 button {
   margin: 1%;
