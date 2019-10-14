@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col s1"></div>
         <div class="col s10">
-        <input id="codigoCartao" type="text" />  
+        <input autofocus id="codigoCartao" type="text" />  
           <div class="container">
             <div class="row">
               <div class="col-sm"></div>
@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function() {
   const inputCodigo = document.querySelector("#codigoCartao");
   const img = document.querySelector("#tagImagem");
 
-inputCodigo.focus();
   inputCodigo.addEventListener("keyup", function(event) {
     if (event.which === 13) {
       //video.pause();

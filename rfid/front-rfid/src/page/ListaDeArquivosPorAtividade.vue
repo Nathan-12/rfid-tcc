@@ -1,30 +1,20 @@
 <template>
   <div id="app">
+    <div class="inputCod">
+      <input autofocus v-model="inputCodigo" @keyup="verificarCodigo" type="text" />
+    </div>
+
     <div class="container">
-      <div class="row">
-        <div class="col s1"></div>
-        <div class="col s10">
-          <div id="container">
-            <input v-model="inputCodigo" @keyup="verificarCodigo" type="text" />
-          </div>
-
-          <div class="container">
-            <div class="row">
-              <div class="col-sm"></div>
-
-              <div class="col-sm">
-                <!--<video loop id="tagVideo" width="400px" height="400px">
+      <div class="row"></div>
+      <div class="col s2"></div>
+      <div class="col s8">
+        <!--<video loop id="tagVideo" width="400px" height="400px">
                   <source src="/assets/arquivos/" type="mp4" />
-                </video>-->
-                <img id="tagImagem" src />
-              </div>
-
-              <div class="col-sm"></div>
-            </div>
-          </div>
-        </div>
-        <div class="col s1"></div>
+      </video>-->
+      <img id="tagImagem" src />
       </div>
+      <div class="col s2"></div>
+      
     </div>
   </div>
 </template>
@@ -66,12 +56,13 @@ export default {
         if (this.srcSet == this.inputCodigo) {
           this.indice++;
           this.initialize();
-        } else {
+        }
+        else {
           alert("Código Errado");
           console.log(this.srcSet);
           console.log(this.inputCodigo);
         }
-        this.inputCodigo = ""
+        this.inputCodigo = "";
       }
     },
     blockSubmit(event) {
@@ -82,7 +73,14 @@ export default {
 </script>
 
 <style>
+.inputCod {
+  margin-top: -100px;
+}
 button {
   margin: 1%;
+}
+img{
+  width: 300px;
+  height: 300px;
 }
 </style>
