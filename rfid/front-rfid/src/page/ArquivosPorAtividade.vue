@@ -20,7 +20,7 @@
                 <td>{{ arquivo.id }}</td>
                 <td>{{ arquivo.nome }}</td>
                 <td>00{{ arquivo.codigo }}</td>
-                <td><img src></td>
+                <td><img id="imagem"></td>
               </tr>
               
             </tbody>
@@ -62,6 +62,10 @@ export default {
 <style>
 button {
   margin: 1%;
+}
+#imagem{
+  height: 60px;
+  width: 60px;
 }
 
 </style>

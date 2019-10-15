@@ -11,6 +11,8 @@
                 <th>#</th>
                 <th>Nome da atividade</th>
                 <th>Tipo da atividade</th>
+                <th>Mídia</th>
+                <th></th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -22,9 +24,12 @@
                 <td>{{ atividade.id }}</td>
                 <td>{{ atividade.nome }}</td>
                 <td>{{ atividade.tipoAtividade }}</td>
+                <td>{{ atividade.midia }}</td>
                 <td><button class="waves-effect waves-light btn-small" @click="adicionar(atividade)">Adicionar arquivos<i class="material-icons left">add</i></button></td>
                 <td><button class=" waves-effect waves-light btn-small" @click="listaFiles(atividade)">Ver arquivos</button></td>
                 <td><button class=" waves-effect waves-light btn-small" @click="verFiles(atividade)">Atividade</button></td>
+                <td><button type="reset" class="waves-effect red waves-light btn-small" @click="excluirAtv(atividade)"><i class="material-icons">delete</i>
+            </button></td>
 
               </tr>
               
@@ -65,6 +70,13 @@ export default {
       },
       listaFiles(atividade){
         this.$router.push("/arquivos/" + atividade.id);
+      },
+      excluirAtv(atividade){
+        this.$http.delete("http://localhost:8090/api/" + atividade.id)
+        .then(res => {
+          this.atividades = res.data;
+          this.$router.go();
+        });
       }
   }
 };
