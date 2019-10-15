@@ -31,10 +31,10 @@
                       class="with-gap"
                       name="group1"
                       type="radio"
-                      value="ATIVIDADE@"
+                      value="V_OU_F"
                       v-model="tipoAtividade"
                     />
-                    <span>Atividade 2</span>
+                    <span>V ou F</span>
                   </label>
                 </p>
               </div>
@@ -60,7 +60,7 @@
                   <label>
                     <input
                       class="with-gap"
-                      name="group1"
+                      name="group2"
                       type="radio"
                       value="IMAGEM"
                       v-model="midia"
@@ -74,7 +74,7 @@
                   <label>
                     <input
                       class="with-gap"
-                      name="group1"
+                      name="group2"
                       type="radio"
                       value="VIDEO"
                       v-model="midia"

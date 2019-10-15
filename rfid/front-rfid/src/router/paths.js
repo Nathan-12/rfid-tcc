@@ -10,6 +10,7 @@ import AssociacaoPage from "../page/Associacao"
 import FilesCadastradosPage from "../page/FilesCadastrados" 
 import AtividadeEncerradaPage from "../page/AtividadeEncerrada" 
 import ArquivosPorAtividadePage from "../page/ArquivosPorAtividade"
+import AdicionarArquivoVFPage from "../page/AdicionarArquivoVF"
 //import FirstRoute from '@/components/FirstRoute'
 //import FirstRouteChild from '@/components/FirstRouteChild'
 
@@ -61,4 +62,9 @@ export default [
     name: "FilesCadastrados",
     component: FilesCadastradosPage
   },
+  {
+    path: "/adicionar-arquivos-vf/:id",
+    name: "AdicionarArquivoVF",
+    component: AdicionarArquivoVFPage
+  }
 ];

@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col s0"></div>
         <div class="col s12">
-          <table>
+          <table class="responsive-table centered striped">
               
             <thead>
               <tr>
@@ -62,7 +62,12 @@ export default {
 
   methods: {
       adicionar(atividade){
+        if(atividade.tipoAtividade == "V_OU_F"){
+          this.$router.push("/adicionar-arquivos-vf/" + atividade.id)
+        }
+        if(atividade.tipoAtividade == "ASSOCIACAO"){
           this.$router.push("/adicionar-arquivo/" + atividade.id);
+        } 
       },
       verFiles(atividade){
         this.$router.push("/associacao/" + atividade.id);
